@@ -1,5 +1,5 @@
 from deep_sort.tracker import Tracker as DeepSortTracker
-from tools import generate_detections as gdet
+from deep_sort_tools import generate_detections as gdet
 from deep_sort import nn_matching
 from deep_sort.detection import Detection
 import numpy as np

@@ -19,6 +19,6 @@ setuptools.setup(name='deep_sort',
       author='Saqib Rokadia',
       author_email='saqib@saqibr.com',
       url='https://github.com/rokadias/deep_sort',
-      packages=['deep_sort', "application_util"],
+      packages=["deep_sort", "deep_sort_tools", "application_util"],
       install_reqs=install_requires,
      )
