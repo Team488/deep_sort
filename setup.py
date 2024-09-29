@@ -14,7 +14,7 @@ with pathlib.Path('requirements.txt').open() as requirements_txt:
 
 
 setuptools.setup(name='deep_sort',
-      version='0.1',
+      version='0.2',
       description='Python Distribution Utilities',
       author='Saqib Rokadia',
       author_email='saqib@saqibr.com',
