@@ -1,5 +1,5 @@
 # vim: expandtab:ts=4:sw=4
-
+import .detection
 
 class TrackState:
     """
@@ -63,9 +63,10 @@ class Track:
 
     """
 
-    def __init__(self, mean, covariance, track_id, n_init, max_age,
+    def __init__(self, mean, covariance, track_id, n_init, max_age,detection : detection,
                  feature=None):
         self.mean = mean
+        self.currentDetection : detection = detection # the detection that this track currently represents
         self.covariance = covariance
         self.track_id = track_id
         self.hits = 1
@@ -135,6 +136,7 @@ class Track:
             The associated detection.
 
         """
+        self.currentDetection = detection
         self.mean, self.covariance = kf.update(
             self.mean, self.covariance, detection.to_xyah())
         self.features.append(detection.feature)
