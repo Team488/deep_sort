@@ -197,9 +197,10 @@ def main():
     with tf.Session(graph=tf.Graph()) as session:
         input_var = tf.placeholder(
             tf.uint8, (None, 128, 64, 3), name="images")
-        image_var = tf.map_fn(
-            lambda x: _preprocess(x), tf.cast(input_var, tf.float32),
-            back_prop=False)
+        images = tf.unstack(tf.cast(input_var, tf.float32), axis=0)  # Unstack batch
+        processed_images = [_preprocess(img) for img in images]      # Process each image
+        image_var = tf.stack(processed_images, axis=0)               # Stack back into batch
+
 
         factory_fn = _network_factory()
         features, _ = factory_fn(image_var, reuse=None)
